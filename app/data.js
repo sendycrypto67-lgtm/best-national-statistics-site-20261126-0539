@@ -12,8 +12,8 @@ export const META = {
 };
 
 export const KPIS = [
-  { label: 'Population', value: '284.4 jt', sub: 'million people, 2025, BPS', detail: 'Fourth largest population in the world.' },
-  { label: 'GDP', value: 'Rp23.821 tn', sub: 'trillion rupiah, 2025, BPS', detail: 'US$1,445.6 billion, World Bank and IMF.' },
+  { label: 'Population', value: '285.7m', sub: 'million people, 2025, World Bank', detail: 'Fourth largest population in the world.' },
+  { label: 'GDP', value: 'Rp23.82 trillion', sub: 'trillion rupiah, 2025, BPS', detail: 'US$1,445.6 billion, World Bank and IMF.' },
   { label: 'GDP growth', value: '5.11%', sub: 'year on year, 2025, BPS', detail: 'Up from 5.03% in 2024.' },
   { label: 'GDP per person', value: 'US$5,060', sub: 'nominal, 2025, IMF', detail: 'Rp83.7 million per person, BPS.' },
   { label: 'Inflation', value: '1.91%', sub: 'CPI average, 2025, IMF', detail: 'Down from 2.18% in 2024.' },
@@ -22,20 +22,25 @@ export const KPIS = [
   { label: 'Human Development Index', value: '75.90', sub: '2025, BPS, high category', detail: 'Up 0.88 points from 75.02 in 2024.' },
 ];
 
-// Population, millions, BPS and World Bank series. 2010 and 2020 are census years.
+// Population, millions, one consistent series: World Bank World
+// Development Indicators, indicator SP.POP.TOTL, verified against the
+// World Bank API. Growth is under 1% a year in every year from 2021
+// to 2025 (276.8 to 278.8 to 281.2 to 283.5 to 285.7).
 export const POPULATION_SERIES = [
-  { year: 2010, pop: 237.6 }, { year: 2015, pop: 255.6 }, { year: 2020, pop: 270.2 },
-  { year: 2021, pop: 274.0 }, { year: 2022, pop: 275.0 }, { year: 2023, pop: 277.0 },
-  { year: 2024, pop: 283.5 }, { year: 2025, pop: 284.4 },
+  { year: 2010, pop: 246.3 }, { year: 2015, pop: 261.8 }, { year: 2020, pop: 274.8 },
+  { year: 2021, pop: 276.8 }, { year: 2022, pop: 278.8 }, { year: 2023, pop: 281.2 },
+  { year: 2024, pop: 283.5 }, { year: 2025, pop: 285.7 },
 ];
 
-// Island groups, mid-2025, BPS via official province totals.
+// Island groups, mid-2025: BPS province totals grouped by island,
+// scaled to the World Bank 2025 total of 285.7 million and rounded,
+// so the slices add to the same total as the population series.
 export const ISLANDS = [
-  { name: 'Java', pop: 158.1, share: '55.6%' },
-  { name: 'Sumatra', pop: 62.3, share: '21.9%' },
-  { name: 'Kalimantan', pop: 18.0, share: '6.3%' },
-  { name: 'Sulawesi', pop: 20.0, share: '7.0%' },
-  { name: 'Bali and Nusa Tenggara', pop: 15.2, share: '5.3%' },
+  { name: 'Java', pop: 158.8, share: '55.6%' },
+  { name: 'Sumatra', pop: 62.6, share: '21.9%' },
+  { name: 'Kalimantan', pop: 18.1, share: '6.3%' },
+  { name: 'Sulawesi', pop: 20.1, share: '7.0%' },
+  { name: 'Bali and Nusa Tenggara', pop: 15.3, share: '5.4%' },
   { name: 'Maluku and Papua', pop: 10.8, share: '3.8%' },
 ];
 
@@ -108,12 +113,12 @@ export const RELEASES = [
 ];
 
 export const SOURCES = [
-  { figure: 'Population, GDP, inflation, poverty, unemployment, HDI', source: 'BPS, Statistics Indonesia (bps.go.id), releases 2024 to 2026', note: 'National figures as published by BPS. Population mid-2025 is 284.4 million.' },
+  { figure: 'Population, GDP, inflation, poverty, unemployment, HDI', source: 'BPS, Statistics Indonesia (bps.go.id), releases 2024 to 2026', note: 'Population is the World Bank WDI series SP.POP.TOTL, 2025 is 285.7 million. Other national figures as published by BPS.' },
   { figure: 'GDP in US dollars, GDP per person, inflation average', source: 'IMF World Economic Outlook, October 2025, and IMF International Financial Statistics', note: 'GDP 2025 US$1,445.6 billion, per person US$5,060, CPI average 1.91%.' },
   { figure: 'Exports and imports', source: 'World Bank, World Development Indicators', note: 'Goods and services, current US dollars. 2025 exports US$330.3 billion, imports US$297.0 billion.' },
   { figure: 'Province populations, areas and densities', source: 'BPS province totals, mid-2024, via official province tables', note: 'Largest 11 provinces shown. Jakarta density uses its land area of 662 km2.' },
-  { figure: 'Island group populations', source: 'BPS province totals grouped by island, mid-2025', note: 'Shares are rounded and may not add to exactly 100%.' },
+  { figure: 'Island group populations', source: 'BPS province totals grouped by island, mid-2025, scaled to the World Bank 2025 total', note: 'Scaled to 285.7 million and rounded. Shares add to 100%.' },
 ];
 
 export function fmtInt(n) { return n.toLocaleString('en-US'); }
-export function fmtMillions(n) { return (n / 1000000).toFixed(1) + ' jt'; }
+export function fmtMillions(n) { return (n / 1000000).toFixed(1) + 'm'; }
