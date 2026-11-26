@@ -15,7 +15,7 @@ A working national statistics site for Indonesia, built for the make.fun bounty 
 - **Provinces** (`#/provinsi`): the largest 11 provinces with working search, island filter, column sorting, click for detail, a two-province comparison, and a CSV download of the filtered table.
 - **Sources** (`#/tentang`): every source, the methods, and what the site is not.
 
-Every figure is real and dated: population 284.4 million in 2025, GDP Rp23,821.1 trillion in 2025, growth 5.11%, inflation 1.91%, poverty 8.25% in September 2025, unemployment 4.85% in August 2025, HDI 75.90 in 2025. Sources are BPS (Statistics Indonesia), the World Bank and the IMF, listed on the Sources page. NusaAngka is an independent explorer and is not affiliated with BPS, the World Bank or the IMF.
+Every figure is real and dated: population 285.7 million in 2025 (World Bank WDI, indicator SP.POP.TOTL), GDP Rp23,821.1 trillion in 2025, growth 5.11%, inflation 1.91%, poverty 8.25% in September 2025, unemployment 4.85% in August 2025, HDI 75.90 in 2025. Sources are BPS (Statistics Indonesia), the World Bank and the IMF, listed on the Sources page. NusaAngka is an independent explorer and is not affiliated with BPS, the World Bank or the IMF.
 
 ## Structure
 
