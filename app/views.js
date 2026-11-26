@@ -15,25 +15,25 @@ export function viewHome() {
   return `
   <section class="hero">
     <h1>Indonesia in Numbers</h1>
-    <p>One page for the figures that describe a country of 284 million people: how many live here, how the economy is doing, who has work, and how life is improving.</p>
+    <p>One page for the figures that describe a country of 285.7 million people: how many live here, how the economy is doing, who has work, and how life is improving.</p>
     <div class="hero-facts"><span>Capital: <b>Jakarta</b></span><span>Provinces: <b>38</b></span><span>Land area: <b>1,904,569 km2</b></span><span>Currency: <b>Indonesian rupiah</b></span><span>Updated: <b>26 November 2026</b></span></div>
   </section>
   ${kpiCards()}
   <div class="grid2">
     <section class="card">
       <h3>Population, 2010 to 2025</h3>
-      <p>Indonesia added about 47 million people since the 2010 census. Growth has slowed to under 1% a year.</p>
-      <canvas class="chart" data-chart="popLine" data-h="240" role="img" aria-label="Line chart of population from 2010 to 2025"></canvas>
-      <p class="chart-readout">2010: 237.6 million (census). 2020: 270.2 million (census). 2025: 284.4 million, BPS.</p>
-      <p class="src">Source: BPS, Statistics Indonesia, and World Bank World Development Indicators.</p>
+      <p>Indonesia added about 39 million people since 2010. Growth has slowed to under 1% a year in recent years.</p>
+      <canvas class="chart" data-chart="popLine" data-h="200" role="img" aria-label="Line chart of population from 2010 to 2025"></canvas>
+      <p class="chart-readout">2010: 246.3 million. 2020: 274.8 million. 2025: 285.7 million, World Bank WDI.</p>
+      <p class="src">Source: World Bank World Development Indicators, indicator SP.POP.TOTL.</p>
     </section>
     <section class="card">
       <h3>Where people live</h3>
       <p>More than half the country lives on Java, an island about the size of England, while Kalimantan is far larger and far emptier.</p>
-      <canvas class="chart" data-chart="islandDonut" data-h="240" role="img" aria-label="Donut chart of population share by island group"></canvas>
+      <canvas class="chart" data-chart="islandDonut" data-h="200" role="img" aria-label="Donut chart of population share by island group"></canvas>
       ${islandLegend()}
       <p class="chart-readout">Java holds 55.6% of the population on about 7% of the land.</p>
-      <p class="src">Source: BPS province totals, mid-2025, grouped by island.</p>
+      <p class="src">Source: BPS province totals, mid-2025, grouped by island and scaled to the World Bank 2025 total of 285.7 million.</p>
     </section>
   </div>
   <div class="grid2">
@@ -58,20 +58,20 @@ export function viewPopulation() {
   const top = [...PROVINCES].sort((a, b) => b.pop - a.pop).slice(0, 8);
   return `
   <h2>Population</h2>
-  <p class="lede">284.4 million people in 2025, the fourth largest population in the world, spread over 38 provinces and more than 17,000 islands.</p>
+  <p class="lede">285.7 million people in 2025, the fourth largest population in the world, spread over 38 provinces and more than 17,000 islands.</p>
   <div class="grid2">
     <section class="card">
       <h3>Population growth, 2010 to 2025</h3>
-      <canvas class="chart" data-chart="popLine" data-h="260" role="img" aria-label="Line chart of population from 2010 to 2025"></canvas>
-      <p class="chart-readout">Census years are 2010 (237.6 million) and 2020 (270.2 million). Later years are mid-year estimates.</p>
-      <p class="src">Source: BPS censuses and mid-year estimates, World Bank.</p>
+      <canvas class="chart" data-chart="popLine" data-h="240" role="img" aria-label="Line chart of population from 2010 to 2025"></canvas>
+      <p class="chart-readout">One series, World Bank WDI, 2010 to 2025. Growth was under 1% a year in every year from 2021 to 2025.</p>
+      <p class="src">Source: World Bank World Development Indicators, indicator SP.POP.TOTL.</p>
     </section>
     <section class="card">
       <h3>Population by island group, 2025</h3>
-      <canvas class="chart" data-chart="islandDonut" data-h="260" role="img" aria-label="Donut chart of population share by island group"></canvas>
+      <canvas class="chart" data-chart="islandDonut" data-h="240" role="img" aria-label="Donut chart of population share by island group"></canvas>
       ${islandLegend()}
-      <p class="chart-readout">Java 158.1 million, Sumatra 62.3 million, Kalimantan 18.0 million. Shares are rounded.</p>
-      <p class="src">Source: BPS province totals, mid-2025, grouped by island.</p>
+      <p class="chart-readout">Java 158.8 million, Sumatra 62.6 million, Kalimantan 18.1 million. Shares are rounded.</p>
+      <p class="src">Source: BPS province totals, mid-2025, grouped by island and scaled to the World Bank 2025 total of 285.7 million.</p>
     </section>
   </div>
   <section class="card" style="margin-top:14px">
@@ -80,7 +80,7 @@ export function viewPopulation() {
     <canvas class="chart" data-chart="topProvinces" data-h="300" role="img" aria-label="Bar chart of the eight largest provinces by population"></canvas>
     <p class="src">Source: BPS province totals, mid-2024. Full table with search and sorting is on the <a href="#/provinsi">Provinces page</a>.</p>
   </section>
-  <div class="note">Reading the numbers: a province total is a mid-year estimate, not a census count. The 2020 census counted 270.2 million people, and later figures are BPS projections from that base.</div>`;
+  <div class="note">Reading the numbers: a province total is a mid-year estimate, not a census count. The population chart uses the World Bank series, not the BPS census count of 270.2 million for 2020, so the two counts are never mixed in one series.</div>`;
 }
 
 export function viewEconomy(state) {
@@ -191,7 +191,7 @@ export function viewProvinces(state) {
     </table></div>
     <p class="src">Source: BPS province totals, mid-2024. Jakarta is a special capital region, which is why its density is far above the rest.</p>
   </section>
-  ${sel ? `<section class="detail"><h3>${sel.name}</h3><div class="cols"><span>Capital: <b>${sel.capital}</b></span><span>Island: <b>${sel.island}</b></span><span>Population: <b>${fmtInt(sel.pop)}</b></span><span>Area: <b>${fmtInt(sel.area)} km2</b></span><span>Density: <b>${fmtInt(sel.density)} people per km2</b></span><span>Share of Indonesia: <b>${(sel.pop / 284400000 * 100).toFixed(1)}%</b></span></div></section>` : ''}
+  ${sel ? `<section class="detail"><h3>${sel.name}</h3><div class="cols"><span>Capital: <b>${sel.capital}</b></span><span>Island: <b>${sel.island}</b></span><span>Population: <b>${fmtInt(sel.pop)}</b></span><span>Area: <b>${fmtInt(sel.area)} km2</b></span><span>Density: <b>${fmtInt(sel.density)} people per km2</b></span><span>Share of Indonesia: <b>${(sel.pop / 285700000 * 100).toFixed(1)}%</b></span></div></section>` : ''}
   <section class="card" style="margin-top:14px">
     <h3>Compare two provinces</h3>
     <div class="controls">
@@ -219,7 +219,7 @@ export function viewAbout() {
     <section class="card">
       <h3>Methods</h3>
       <ul class="list">
-        <li>Population figures are mid-year estimates unless marked census. The 2010 census counted 237.6 million people and the 2020 census counted 270.2 million.</li>
+        <li>Population figures are the World Bank WDI series SP.POP.TOTL, 2010 to 2025, unless a figure is marked as a BPS province total. The BPS 2020 census counted 270.2 million people, a different count from the World Bank estimate for that year, so the two are not mixed in one series.</li>
         <li>Growth rates are year on year. Inflation is the CPI period average from the IMF.</li>
         <li>Density is population divided by land area. Shares are rounded and may not add to exactly 100%.</li>
         <li>All charts are drawn in the browser from the data file in this folder. No figure is fetched from the internet.</li>
