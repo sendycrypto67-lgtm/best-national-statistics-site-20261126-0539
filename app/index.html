@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NusaAngka, Indonesia in Numbers</title>
+<meta name="description" content="Indonesia in numbers: population, economy, work, poverty and human development, with real figures from BPS, the World Bank and the IMF.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230f2a4a'/%3E%3Ctext x='32' y='42' font-size='28' font-family='Arial' font-weight='bold' fill='%23ffd98a' text-anchor='middle'%3ENA%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#/">
+      <span class="brand-mark">NA</span>
+      <span class="brand-text"><strong>NusaAngka</strong><small>Indonesia in Numbers</small></span>
+    </a>
+    <button id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" class="nav" aria-label="Sections">
+      <a href="#/" data-nav="home">Dashboard</a>
+      <a href="#/penduduk" data-nav="penduduk">Population</a>
+      <a href="#/ekonomi" data-nav="ekonomi">Economy</a>
+      <a href="#/sosial" data-nav="sosial">People</a>
+      <a href="#/provinsi" data-nav="provinsi">Provinces</a>
+      <a href="#/tentang" data-nav="tentang">Sources</a>
+    </nav>
+  </div>
+</header>
+<main id="app" class="wrap" aria-live="polite"></main>
+<footer class="footer">
+  <div class="wrap">
+    <p><strong>NusaAngka</strong> is an independent statistics explorer. It is not affiliated with BPS, Statistics Indonesia, the World Bank or the IMF. Figures are reproduced from their published releases, with the year and source shown next to every number.</p>
+    <p>Data updated 26 November 2026. Works offline: every page, chart and table on this site is a file in this folder, with no network request.</p>
+  </div>
+</footer>
+<script type="module" src="main.js"></script>
+</body>
+</html>
