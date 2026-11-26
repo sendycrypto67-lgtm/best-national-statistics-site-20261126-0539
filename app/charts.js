@@ -65,7 +65,7 @@ export function drawBars(canvas, items, opts) {
 
 export function drawLine(canvas, items, opts) {
   const { ctx, w, h } = setupCanvas(canvas);
-  const pad = { l: 48, r: 16, t: 16, b: 34 };
+  const pad = { l: 48, r: 26, t: 28, b: 34 };
   const vals = items.map((d) => d.value);
   const min = Math.min(...vals);
   const max = Math.max(...vals);
@@ -87,9 +87,19 @@ export function drawLine(canvas, items, opts) {
     ctx.fillStyle = '#ffffff';
     ctx.beginPath(); ctx.arc(xs[i], ys[i], 1.8, 0, Math.PI * 2); ctx.fill();
     ctx.fillStyle = '#1c2733';
-    if (i === 0) { ctx.textAlign = 'left'; ctx.fillText(opts.format(d.value), xs[i] + 8, ys[i] - 10); }
-    else if (i === items.length - 1) { ctx.textAlign = 'right'; ctx.fillText(opts.format(d.value), xs[i] - 8, ys[i] - 10); }
-    else { ctx.textAlign = 'center'; ctx.fillText(opts.format(d.value), xs[i], ys[i] - 10); }
+    const label = opts.format(d.value);
+    const tw = ctx.measureText(label).width;
+    let lx, lw;
+    if (i === 0) { ctx.textAlign = 'left'; lx = xs[i] + 10; }
+    else if (i === items.length - 1) { ctx.textAlign = 'right'; lx = xs[i] - 10; }
+    else { ctx.textAlign = 'center'; lx = xs[i]; }
+    lw = ctx.textAlign === 'center' ? tw / 2 : tw;
+    ctx.fillStyle = 'rgba(255,255,255,0.92)';
+    if (ctx.textAlign === 'left') ctx.fillRect(lx - 2, ys[i] - 26, tw + 4, 15);
+    else if (ctx.textAlign === 'right') ctx.fillRect(lx - tw - 2, ys[i] - 26, tw + 4, 15);
+    else ctx.fillRect(lx - lw - 2, ys[i] - 26, tw + 4, 15);
+    ctx.fillStyle = '#1c2733';
+    ctx.fillText(label, lx, ys[i] - 14);
     ctx.fillStyle = '#5b6b7d';
     ctx.textAlign = 'center';
     ctx.fillText(String(d.label), xs[i], h - pad.b + 16);
