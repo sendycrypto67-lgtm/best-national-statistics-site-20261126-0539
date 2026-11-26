@@ -15,19 +15,19 @@ const state = {
 };
 
 const CHARTS = {
-  popLine: (c) => drawLine(c, POPULATION_SERIES.map((d) => ({ label: String(d.year), value: d.pop })), { format: (v) => v.toFixed(1) + ' jt' }),
-  islandDonut: (c) => drawDonut(c, ISLANDS.map((d) => ({ label: d.name, value: d.pop })), { center: '284.4 jt', centerSub: 'people, 2025', format: (v) => v.toFixed(1) + ' jt' }),
+  popLine: (c) => drawLine(c, POPULATION_SERIES.map((d) => ({ label: String(d.year), value: d.pop })), { format: (v) => v.toFixed(1) + 'm' }),
+  islandDonut: (c) => drawDonut(c, ISLANDS.map((d) => ({ label: d.name, value: d.pop })), { center: '285.7m', centerSub: 'people, 2025', format: (v) => v.toFixed(1) + 'm' }),
   gdpLine: (c) => drawLine(c, GDP_SERIES.map((d) => ({ label: String(d.year), value: d.growth })), { format: (v) => v.toFixed(2) + '%' }),
   inflationBars: (c) => drawBars(c, GDP_SERIES.map((d) => ({ label: String(d.year), value: d.inflation })), { format: (v) => v.toFixed(2) + '%' }),
   tradeBars: (c) => drawBars(c, TRADE_SERIES.flatMap((d) => [{ label: d.year + ' exp', value: d.exports }, { label: d.year + ' imp', value: d.imports }]), { format: (v) => '$' + v + ' bn', color: '#12836f' }),
   povertyLine: (c) => drawLine(c, POVERTY_SERIES.map((d) => ({ label: d.label, value: d.value })), { format: (v) => v.toFixed(2) + '%' }),
   unempLine: (c) => drawLine(c, UNEMPLOYMENT_SERIES.map((d) => ({ label: d.label, value: d.value })), { format: (v) => v.toFixed(2) + '%' }),
   hdiLine: (c) => drawLine(c, HDI_SERIES.map((d) => ({ label: String(d.year), value: d.hdi })), { format: (v) => v.toFixed(2) }),
-  topProvinces: (c) => drawHbars(c, [...PROVINCES].sort((a, b) => b.pop - a.pop).slice(0, 8).map((p) => ({ label: p.name, value: p.pop / 1000000 })), { format: (v) => v.toFixed(1) + ' jt' }),
+  topProvinces: (c) => drawHbars(c, [...PROVINCES].sort((a, b) => b.pop - a.pop).slice(0, 8).map((p) => ({ label: p.name, value: p.pop / 1000000 })), { format: (v) => v.toFixed(1) + 'm' }),
   compareBars: (c) => {
     const a = PROVINCES.find((p) => p.name === state.compareA);
     const b = PROVINCES.find((p) => p.name === state.compareB);
-    drawHbars(c, [{ label: a.name, value: a.pop / 1000000 }, { label: b.name, value: b.pop / 1000000 }], { format: (v) => v.toFixed(1) + ' jt people' });
+    drawHbars(c, [{ label: a.name, value: a.pop / 1000000 }, { label: b.name, value: b.pop / 1000000 }], { format: (v) => v.toFixed(1) + 'm people' });
   },
 };
 
